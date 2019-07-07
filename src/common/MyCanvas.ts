@@ -1,4 +1,4 @@
-import { Rgba } from "./common/Rgba";
+import { Rgba } from "./Rgba";
 
 export default class MyCanvas {
 
