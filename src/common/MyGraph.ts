@@ -1,5 +1,4 @@
 import { Rgba } from "./Rgba";
-import { Point } from "./Point";
 import { Edge } from "./Edge";
 
 export default class MyGraph {
@@ -127,16 +126,15 @@ export default class MyGraph {
         let edge2: Edge = new Edge(x2, y2, x3, y3);
         let edge3: Edge = new Edge(x3, y3, x1, y1);
 
-        let size = 1;
         if (edge1.yDis > edge2.yDis && edge1.yDis > edge3.yDis) {
-            this.drawEdge(edge2, edge1, color, size);
-            this.drawEdge(edge3, edge1, color, size);
+            this.drawEdge(edge2, edge1, color);
+            this.drawEdge(edge3, edge1, color);
         } else if (edge2.yDis > edge1.yDis && edge2.yDis > edge3.yDis) {
-            this.drawEdge(edge1, edge2, color, size);
-            this.drawEdge(edge3, edge2, color, size);
+            this.drawEdge(edge1, edge2, color);
+            this.drawEdge(edge3, edge2, color);
         } else {
-            this.drawEdge(edge1, edge3, color, size);
-            this.drawEdge(edge2, edge3, color, size);
+            this.drawEdge(edge1, edge3, color);
+            this.drawEdge(edge2, edge3, color);
         }
     }
 
@@ -147,12 +145,12 @@ export default class MyGraph {
      * @param color 
      * @param size 
      */
-    public drawEdge(edge1: Edge, edge2: Edge, color: Rgba, size: number) {
+    public drawEdge(edge1: Edge, edge2: Edge, color: Rgba) {
 
         for (let y = edge1.y1; y < edge1.y2; y += 1) {
             let x1 = edge1.getX(y);
             let x2 = edge2.getX(y);
-            this.drawLine(x1, y, x2, y, color, size);
+            this.drawLine(x1, y, x2, y, color, 1);
         }
     }
 }
