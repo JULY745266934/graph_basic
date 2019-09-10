@@ -1,42 +1,36 @@
 {
-  "name": "typescript_demo",
-  "version": "1.0.2",
-  "description": "TypeScript Demo",
-  "main": "./dist/mian.js",
+  "name": "graph_basic",
+  "version": "1.0.0",
+  "description": "2d图形基础学习",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx gulp"
+    "dev": "gulp dev"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/durban89/typescript_demo.git"
+    "url": "git+https://github.com/JULY745266934/graph_basic.git"
   },
-  "keywords": [
-    "TypeScript",
-    "Demo"
-  ],
-  "author": "durban.zhang <durban.zhang@gmail.com>",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/durban89/typescript_demo/issues"
+    "url": "https://github.com/JULY745266934/graph_basic/issues"
   },
-  "homepage": "https://github.com/durban89/typescript_demo#readme",
+  "homepage": "https://github.com/JULY745266934/graph_basic#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "babelify": "^8.0.0",
-    "browserify": "^16.2.2",
-    "gulp": "^4.0.0",
-    "gulp-cli": "^2.0.1",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-typescript": "^5.0.0-alpha.3",
-    "gulp-uglify": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
-    "ts-node": "^7.0.1",
-    "tsify": "^4.0.0",
-    "typescript": "^3.0.1",
+    "tsify": "^4.0.1",
+    "typescript": "^3.5.3",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
-    "watchify": "^3.11.0"
+    "watchify": "^3.11.1"
   }
 }

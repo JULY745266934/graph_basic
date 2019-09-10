@@ -2,6 +2,9 @@ import { Rgba } from "../common/Rgba";
 import MathUtil from "../common/MathUtil";
 import { GEdge } from "./GEdge";
 
+/**
+ * 图形绘制类
+ */
 export default class GMyGraph {
     private _buffer: Array<Rgba>;
     private _width: number = 0;
@@ -15,7 +18,7 @@ export default class GMyGraph {
         this.clearBuffer();
     }
 
-    public get buffer(): Rgba[] {
+    public get buffer(): Array<Rgba> {
         return this._buffer;
     }
 

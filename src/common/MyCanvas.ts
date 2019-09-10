@@ -21,7 +21,7 @@ export default class MyCanvas {
         return this._canvas.height;
     }
 
-    public fillBuffer(buffer: Rgba[]) {
+    public fillBuffer(buffer: Array<Rgba>) {
         let imgData = this._imgData;
         for (var i = 0, j = 0; i < imgData.data.length && j < buffer.length; i += 4, j++) {
             imgData.data[i + 0] = buffer[j].r;

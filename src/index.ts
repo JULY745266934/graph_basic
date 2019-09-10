@@ -2,13 +2,14 @@ import MyCanvas from "./common/MyCanvas";
 import MyGraph from "./common/MyGraph";
 import { Rgba } from "./common/Rgba";
 import GMyGraph from "./gradient/GMyGraph";
+import { GImage } from "./common/GImage";
 
 class Demo {
 
     constructor() {
         let myCanvas = new MyCanvas();
 
-        let myGraph: MyGraph = new MyGraph(myCanvas.width, myCanvas.height);
+        let myGraph = new MyGraph(myCanvas.width, myCanvas.height);
 
         //画点
 
@@ -22,7 +23,7 @@ class Demo {
 
         // myCanvas.fillBuffer(myGraph.buffer);
 
-        let gMyGraph: GMyGraph = new GMyGraph(myCanvas.width, myCanvas.height);
+        let gMyGraph = new GMyGraph(myCanvas.width, myCanvas.height);
 
         // 渐变斜三角形
         // gMyGraph.drawTriangle(
@@ -35,16 +36,20 @@ class Demo {
         // );
 
         // 渐变
-        gMyGraph.drawTriangle(
-            64, 10,
-            14, 70,
-            114, 70,
-            new Rgba(255, 0, 0, 255),
-            new Rgba(0, 255, 0, 255),
-            new Rgba(0, 0, 255, 255)
-        );
+        // gMyGraph.drawTriangle(
+        //     64, 10,
+        //     14, 70,
+        //     114, 70,
+        //     new Rgba(255, 0, 0, 255),
+        //     new Rgba(0, 255, 0, 255),
+        //     new Rgba(0, 0, 255, 255)
+        // );
 
-        myCanvas.fillBuffer(gMyGraph.buffer);
+        // myCanvas.fillBuffer(gMyGraph.buffer);
+
+        let image = new GImage();
+        image.loadImage('https://mdn.mozillademos.org/files/5397/rhino.jpg');
+
     }
 }
 

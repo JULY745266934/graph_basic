@@ -1,50 +1,34 @@
-const gulp = require("gulp");
-const browserify = require("browserify");
-const source = require('vinyl-source-stream');
-const tsify = require("tsify");
-const watchify = require("watchify");
-const gutil = require("gulp-util");
-const uglify = require('gulp-uglify');
-const sourcemaps = require('gulp-sourcemaps');
-const buffer = require('vinyl-buffer');
-const paths = {
-  pages: ['src/*.html']
-};
+var browserify = require('browserify');
+var gulp = require('gulp');
+var source = require('vinyl-source-stream');
+//ts转js
+var tsify = require('tsify');
+// convert the streaming vinyl file object
+var buffer = require('vinyl-buffer');
+//压缩js
+var uglify = require('gulp-uglify');
 
-const watchedBrowserify = watchify(browserify({
-  basedir: '.',
-  debug: true,
-  entries: ['src/index.ts'],
-  cache: {},
-  packageCache: {}
-}).plugin(tsify));
+var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task("copy-html", function () {
-  return gulp.src(paths.pages)
-    .pipe(gulp.dest("dist"));
-})
-
-function browserifyBundle() {
-  return watchedBrowserify
-    .transform('babelify', {
-      presets: ['env'],
-      extensions: ['.ts']
+gulp.task('browserify', function () {
+  return browserify('./src/index.ts')
+    .transform('babelify', {//适配es6语法
+      global: true,//不加会报错
+      presets: ['@babel/preset-env'],
+      extensions: ['.js', '.ts']
     })
+    .plugin(tsify)
     .bundle()
+    //Pass desired output filename to vinyl-source-stream
     .pipe(source('bundle.js'))
-    .pipe(buffer())
+    .pipe(buffer()) // <----- convert from streaming to buffered vinyl file object
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest("dist"));
-}
+    .pipe(uglify()) //压缩混淆js
+    .pipe(sourcemaps.write('./map'))
+    // Start piping stream to tasks!
+    .pipe(gulp.dest('./dist/'));
+});
 
-gulp.task("browserify", function () {
-  return browserifyBundle();
-})
-
-gulp.task("default", gulp.series('copy-html', 'browserify'));
-watchedBrowserify.on("update", browserifyBundle);
-watchedBrowserify.on("log", gutil.log);
+gulp.task("dev", gulp.parallel('browserify'));

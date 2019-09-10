@@ -14,7 +14,7 @@ export default class MyGraph {
         this.clearBuffer();
     }
 
-    public get buffer(): Rgba[] {
+    public get buffer():  Array<Rgba> {
         return this._buffer;
     }
 
